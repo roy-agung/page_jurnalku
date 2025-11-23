@@ -147,8 +147,8 @@ Widget build(BuildContext context) {
             
                               Container(
                                 margin: EdgeInsets.only(left: 370),
-                                height: 50,
-                                width: 50,
+                                height: 45,
+                                width: 45,
                                 decoration: BoxDecoration(
                                   color: Colors.blue[100],
                                   shape: BoxShape.circle,
