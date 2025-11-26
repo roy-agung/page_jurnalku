@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:page_jurnalku/dashboard.dart';
+import 'package:page_jurnalku/panduan_penggunaan.dart';
 import 'catatan_sikap.dart';
 import 'progress.dart';
 
@@ -342,6 +343,7 @@ class _SettingAccountScreenState extends State<PengaturanAkun> {
                               ),
                             ],
                           ),
+                        ),
                         ),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
