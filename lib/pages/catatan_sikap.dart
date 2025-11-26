@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
 
+Widget tampilData(String labelData, String value) {
+  return Padding(padding: EdgeInsets.all(10),
+    child: Row(
+      children: [
+        SizedBox(
+          width: 100, child: Text(labelData),),
+          Expanded(child: Text(value),),
+      ],
+    ),
+    );
+}
 class CatatanSikap extends StatefulWidget {
   const CatatanSikap({super.key});
 
@@ -271,73 +282,19 @@ Widget build(BuildContext context) {
                 ),
                 
               SizedBox(height: 20),
-              Container(
-                height: 350,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(minWidth: 800),
-                      child: Column (
-                        children: [
-                          //HEADER TABEL
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 25,
-                              vertical: 25,
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(color: Colors.grey),
-                              ),
-                              color: Colors.grey[200],
-                            ),
-                            child: Row(
-                              children: [
-                                SizedBox(width: 60, child: Text("NO", style: TextStyle(fontWeight: FontWeight.bold))),
-                                SizedBox(width: 120, child: Text("KATEGORI", style: TextStyle(fontWeight: FontWeight.bold))),
-                                SizedBox(width: 120, child: Text("CATATAN", style: TextStyle(fontWeight: FontWeight.bold))),
-                                SizedBox(width: 100, child: Text("STATUS", style: TextStyle(fontWeight: FontWeight.bold))),
-                                SizedBox(width: 140, child: Text("DILAPORKAN", style: TextStyle(fontWeight: FontWeight.bold))),
-                                SizedBox(width: 180, child: Text("UPDATE TERAKHIR", style: TextStyle(fontWeight: FontWeight.bold))),
-                                SizedBox(width: 40, child: Text("AKSI", style: TextStyle(fontWeight: FontWeight.bold))),
-                              ],
-                            )
-                          ),
-                          Expanded(
-                            child: Container(
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.all(40),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.check_circle_outline, size: 70, color: Colors.grey[500],),
-                                  Text("Tidak ada catatan sikap", style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  ),
-                                  SizedBox(height: 10,),
-                                  Text("Belum ada catatan sikap yang dilaporkan", style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey,
-                                  ),
-                                  ),
-                              ],
-                              ),
-                            ),
-                            ),
-                        ],
-                      )
-                      )
-                  )
+              Card(
+                child: ExpansionTile(title: Text("Catatan Sikap"),
+                subtitle: Text("Lihat Detail Catatan Sikap"),
+                childrenPadding: EdgeInsets.all(16.0),
+                children: [
+                  tampilData("No", "-"),
+                  tampilData("Kategori", "-"),
+                  tampilData("Catatan", "-"),
+                  tampilData("Status", "-"),
+                  tampilData("Dilaporkan", "-"),
+                  tampilData("Update Terakhir", "-"),
+                  tampilData("Aksi", "-"),
+                ],
                 ),
               )
                 
