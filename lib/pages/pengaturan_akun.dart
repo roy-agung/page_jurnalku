@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:page_jurnalku/direktori_siswa.dart';
+import 'package:page_jurnalku/dashboard.dart';
+import 'package:page_jurnalku/panduan_penggunaan.dart';
 import 'catatan_sikap.dart';
-import 'panduan_penggunaan.dart';
-import 'permintaan_saksi_page.dart';
+import 'progress.dart';
 
-class SettingAccountScreen extends StatefulWidget {
-  const SettingAccountScreen({super.key});
+class PengaturanAkun extends StatefulWidget {
+  const PengaturanAkun({super.key});
 
   @override
-  State<SettingAccountScreen> createState() => _SettingAccountScreenState();
+  State<PengaturanAkun> createState() => _SettingAccountScreenState();
 }
 
-class _SettingAccountScreenState extends State<SettingAccountScreen> {
+class _SettingAccountScreenState extends State<PengaturanAkun> {
   bool passowrdVisible = false;
 
   @override
@@ -269,6 +269,78 @@ class _SettingAccountScreenState extends State<SettingAccountScreen> {
                         ),
                       ),
 
+                      Container(
+                        margin: EdgeInsets.only(top: 40),
+                        height: 80,
+                        width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            border: Border.all(color: Colors.grey[200]!),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              SizedBox(height: 20,),
+                          SizedBox( height: 50, width: 190,
+                          child: ElevatedButton(onPressed:() {}, 
+                          child: Text('Simpan Perubahan', style: TextStyle(fontSize: 16)), 
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color.fromARGB(255, 15, 86, 143),
+                            foregroundColor: Colors.white,
+                            elevation: 1,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            )
+                          ) 
+                          )
+                          ),
+                          SizedBox(width: 20,),
+                          SizedBox( height: 50, width: 190,
+                          child: ElevatedButton(onPressed:() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => CatatanSikap()),
+                            );
+                          }, 
+                          child: Text('Catatan Sikap', style: TextStyle(fontSize: 16)), 
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color.fromARGB(255, 15, 86, 143),
+                            foregroundColor: Colors.white,
+                            elevation: 1,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            )
+                          ) 
+                          )
+                          ),
+                          SizedBox(width: 20,),
+                              SizedBox( height: 50, width: 190,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => ProgressBelajar())
+                                    );
+                                  },
+                                  child: Text("progress", style: TextStyle(
+                                    fontSize: 16,)
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color.fromARGB(255, 15, 86, 143),
+                                    foregroundColor: Colors.white,
+                                    elevation: 1,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    )
+                                  )
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        ),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
