@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:page_jurnalku/dashboard.dart';
 import 'catatan_sikap.dart';
 import 'progress.dart';
 
@@ -342,10 +343,84 @@ class _SettingAccountScreenState extends State<PengaturanAkun> {
                             ],
                           ),
                         ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            SizedBox(height: 20,),
+                        SizedBox( height: 50, width: 190,
+                        child: ElevatedButton(onPressed:() {}, 
+                        child: Text('Simpan Perubahan', style: TextStyle(fontSize: 16)), 
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 15, 86, 143),
+                          foregroundColor: Colors.white,
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          )
+                        ) 
+                        )
+                        ),
+                        SizedBox(width: 20,),
+                        SizedBox( height: 50, width: 190,
+                        child: ElevatedButton(onPressed:() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => CatatanSikap()),
+                          );
+                        }, 
+                        child: Text('Catatan Sikap', style: TextStyle(fontSize: 16)), 
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 15, 86, 143),
+                          foregroundColor: Colors.white,
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          )
+                        ) 
+                        )
+                        ),
+                        SizedBox(width: 20,),
+                        SizedBox( height: 50, width: 190,
+                        child: ElevatedButton(onPressed:() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => PanduanPenggunaan()),
+                          );
+                        }, 
+                        child: Text('Panduan Penggunaan', style: TextStyle(fontSize: 16)), 
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 15, 86, 143),
+                          foregroundColor: Colors.white,
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          )
+                        ) 
+                        )
+                        ),
+                        SizedBox(width: 20,),
+                        SizedBox( height: 50, width: 190,
+                        child: ElevatedButton(onPressed:() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Dashboard()),
+                          );
+                        }, 
+                        child: Text('Dashboard', style: TextStyle(fontSize: 16)), 
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 15, 86, 143),
+                          foregroundColor: Colors.white,
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          )
+                        ) 
+                        )
+                        )
+                          ],
+                        ),
                       )
-                      
-                      
-
                     ],
                     ),
                 )
