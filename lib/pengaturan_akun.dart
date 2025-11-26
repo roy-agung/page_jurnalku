@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:page_jurnalku/direktori_siswa.dart';
 import 'catatan_sikap.dart';
 import 'panduan_penggunaan.dart';
+import 'permintaan_saksi_page.dart';
 
 class SettingAccountScreen extends StatefulWidget {
   const SettingAccountScreen({super.key});
@@ -24,11 +26,7 @@ class _SettingAccountScreenState extends State<SettingAccountScreen> {
       appBar: AppBar(
         title:Row(
           children: [
-            Expanded(child:
-            Icon(Icons.home),
-            
-            ),
-              Padding(padding: EdgeInsets.only(left: 210),),
+              Padding(padding: EdgeInsets.only(left: 160),),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -317,6 +315,45 @@ class _SettingAccountScreenState extends State<SettingAccountScreen> {
                           );
                         }, 
                         child: Text('Panduan Penggunaan', style: TextStyle(fontSize: 16)), 
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 15, 86, 143),
+                          foregroundColor: Colors.white,
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          )
+                        ) 
+                        )
+                        ),
+                        SizedBox(width: 20,),
+                        SizedBox( height: 50, width: 190,
+                        child: ElevatedButton(onPressed:() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => PermintaanSaksiPage()),
+                          );
+                        }, 
+                        child: Text('Saksi', style: TextStyle(fontSize: 16)), 
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 15, 86, 143),
+                          foregroundColor: Colors.white,
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          )
+                        ) 
+                        )
+                        ),
+                        
+                         SizedBox(width: 20,),
+                        SizedBox( height: 50, width: 190,
+                        child: ElevatedButton(onPressed:() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => DirektoriSiswa()),
+                          );
+                        }, 
+                        child: Text('Direktori Siswa', style: TextStyle(fontSize: 16)), 
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(255, 15, 86, 143),
                           foregroundColor: Colors.white,
