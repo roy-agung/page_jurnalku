@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:page_jurnalku/direktori_siswa.dart';
-import 'package:page_jurnalku/panduan_penggunaan.dart';
-import 'package:page_jurnalku/permintaan_saksi_page.dart';
+import 'package:page_jurnalku/pages/direktori_siswa.dart';
+import 'package:page_jurnalku/pages/panduan_penggunaan.dart';
+import 'package:page_jurnalku/pages/permintaan_saksi_page.dart';
 import 'catatan_sikap.dart';
 import 'progress.dart';
 
