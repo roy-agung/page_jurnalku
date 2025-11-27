@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'pages/pengaturan_akun.dart';
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await initializeDateFormatting('id', null);
+import 'login_page.dart';
+void main() {
   runApp(const MyApp());
 }
 class MyApp extends StatefulWidget {
@@ -18,7 +15,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PengaturanAkun(),
+      home: LoginPage(),
       );
   }
 }
