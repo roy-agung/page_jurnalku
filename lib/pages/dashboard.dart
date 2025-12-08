@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_jurnalku/pages/progress.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -275,12 +276,22 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     Row(
                       children: [
-                        Text(
-                          "Lihat Progress Kamu",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.blue[800],
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProgressBelajar(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            "Lihat Progress Kamu",
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.blue[800],
+                            ),
                           ),
                         ),
                         SizedBox(width: 6),

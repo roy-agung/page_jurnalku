@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class PermintaanSaksiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -47,20 +46,14 @@ class PermintaanSaksiPage extends StatelessWidget {
                       SizedBox(height: 2),
                       Text(
                         'PPLG XII-4',
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontSize: 11,
-                        ),
+                        style: TextStyle(color: Colors.black54, fontSize: 11),
                       ),
                     ],
                   ),
                   SizedBox(width: 8),
                   CircleAvatar(
                     radius: 16,
-                    child: Text(
-                      'S',
-                      style: TextStyle(fontSize: 14),
-                    ),
+                    child: Text('S', style: TextStyle(fontSize: 14)),
                   ),
                   Icon(Icons.arrow_drop_down, color: Colors.black54),
                 ],
@@ -70,10 +63,7 @@ class PermintaanSaksiPage extends StatelessWidget {
         ],
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(1.0),
-          child: Container(
-            color: Colors.grey.shade300,
-            height: 1.0,
-          ),
+          child: Container(color: Colors.grey.shade300, height: 1.0),
         ),
       ),
 
@@ -98,10 +88,7 @@ class PermintaanSaksiPage extends StatelessWidget {
                   SizedBox(height: 4),
                   Text(
                     'Kelola permintaan menjadi saksi dari siswa lain',
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.black54,
-                    ),
+                    style: TextStyle(fontSize: 13, color: Colors.black54),
                   ),
                   SizedBox(height: 8),
                   Container(
@@ -134,80 +121,15 @@ class PermintaanSaksiPage extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    // Header kolom
-                    Container(
-                      width: double.infinity,
-                      color: Colors.grey.shade100,
-                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                      child: Row(
+                    SizedBox(height: 20),
+                    Card(
+                      child: ExpansionTile(
+                        title: Text("Permintaan Saksi"),
+                        subtitle: Text("Lihat Detail Permintaan"),
+                        childrenPadding: EdgeInsets.all(16.0),
                         children: [
-                          Expanded(
-                            flex: 2,
-                            child: Text(
-                              'PENGIRIM',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black54,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Text(
-                              'TANGGAL',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black54,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Text(
-                              'KONFIRMASI',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black54,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    Divider(height: 1, color: Colors.grey.shade300),
-
-                    // Pesan kalau belum ada data
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 50),
-                      child: Column(
-                        children: [
-                          Icon(Icons.people_outline,
-                              size: 70, color: Colors.grey.shade400),
-                          SizedBox(height: 16),
-                          Text(
-                            'Belum ada permintaan',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          SizedBox(height: 6),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Text(
-                              'Belum ada yang mengirim permintaan saksi kepada Anda',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.black54,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
+                          tampilData("Pengirim", "Tanggal", "Status"),
+                          tampilData("-", "-", "-"),
                         ],
                       ),
                     ),
@@ -221,3 +143,32 @@ class PermintaanSaksiPage extends StatelessWidget {
     );
   }
 }
+
+Widget tampilData(String col1, String col2, String col3) {
+  return Table(
+    columnWidths: const {
+      0: FlexColumnWidth(2),
+      1: FlexColumnWidth(2),
+      2: FlexColumnWidth(1),
+    },
+    children: [
+      TableRow(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Text(col1),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Text(col2),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Text(col3),
+          ),
+        ],
+      )
+    ],
+  );
+}
+
