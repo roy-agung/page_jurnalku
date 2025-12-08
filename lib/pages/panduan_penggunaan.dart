@@ -1,79 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class PanduanPenggunaan extends StatelessWidget {
-  const PanduanPenggunaan({super.key});
+class PanduanPenggunaanPage extends StatelessWidget {
+  const PanduanPenggunaanPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        title: Icon(Icons.home_outlined),
-        actions: [
-          Row(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text("Bintang Novian Pramesrawan",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      )),
-                  Text("PPLG XII-4",
-                      style: TextStyle(
-                        fontSize: 12,
-                      )),
-                ],
-              ),
-              SizedBox(width: 8),
-              CircleAvatar(
-                backgroundImage: AssetImage('assets/images/roy.png'),
-              ),
-            ],
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsetsGeometry.all(16),
+    return SingleChildScrollView(
+      child: Container(
+        width: double.infinity, // ✅ penting
+        padding: EdgeInsetsGeometry.all(16.0),
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
-                  Icon(
-                    Icons.menu_book,
-                    color: Colors.blue[900],
-                    size: 48,
-                  ),
+                  Icon(Icons.menu_book, color: Colors.blue[900], size: 48),
                   SizedBox(width: 16),
                   Text(
-                'Panduan Penggunaan',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.blue[900],
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              ]
+                    'Panduan Penggunaan',
+                    style: GoogleFonts.poppins(
+                      fontSize: 19,
+                      color: Colors.blue[900],
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 8),
               Text(
                 "Selamat datang di panduan penggunaan aplikasi Jurnalku. Panduan ini akan membantu Anda memahami cara menggunakan fitur-fitur yang tersedia dengan optimal.",
-                style: TextStyle(fontSize: 16),
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey[500],
                 ),
+              ),
               SizedBox(height: 24),
-              Text("Umum",
-                style: TextStyle(
+              Text(
+                "Umum",
+                style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Divider(height: 2,),
+              Divider(height: 2),
               SizedBox(height: 12),
-              
+
               // Unggah Profil
               Container(
                 width: double.infinity,
@@ -91,15 +65,11 @@ class PanduanPenggunaan extends StatelessWidget {
                       color: Colors.blue[900],
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Icon(
-                      Icons.person,
-                      size: 24,
-                      color: Colors.white,
-                    ),
+                    child: Icon(Icons.person, size: 24, color: Colors.white),
                   ),
                   title: Text(
                     "Unggah Profil",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -108,7 +78,10 @@ class PanduanPenggunaan extends StatelessWidget {
                     padding: EdgeInsets.only(top: 8),
                     child: Text(
                       "Panduan Untuk mengunggah profil pengguna",
-                      style: TextStyle(fontSize: 14),
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
@@ -132,15 +105,11 @@ class PanduanPenggunaan extends StatelessWidget {
                       color: Colors.blue[900],
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Icon(
-                      Icons.password,
-                      size: 24,
-                      color: Colors.white,
-                    ),
+                    child: Icon(Icons.password, size: 24, color: Colors.white),
                   ),
                   title: Text(
                     "Ganti Password",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -149,7 +118,10 @@ class PanduanPenggunaan extends StatelessWidget {
                     padding: EdgeInsets.only(top: 8),
                     child: Text(
                       "Panduan Untuk Mengganti password pengguna",
-                      style: TextStyle(fontSize: 14),
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
@@ -157,13 +129,14 @@ class PanduanPenggunaan extends StatelessWidget {
               SizedBox(height: 24),
 
               // Untuk SISWA
-              Text("Untuk Siswa",
-                style: TextStyle(
+              Text(
+                "Untuk Siswa",
+                style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Divider(height: 2,),
+              Divider(height: 2),
               SizedBox(height: 12),
 
               // Mengisi Jurnal Harian
@@ -191,7 +164,7 @@ class PanduanPenggunaan extends StatelessWidget {
                   ),
                   title: Text(
                     "Mengisi Jurnal",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -200,14 +173,17 @@ class PanduanPenggunaan extends StatelessWidget {
                     padding: EdgeInsets.only(top: 8),
                     child: Text(
                       "Panduan Untuk Mengisi Kegiatan Sehari - hari",
-                      style: TextStyle(fontSize: 14),
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
               ),
               SizedBox(height: 12),
 
-              // Kelengkapan Profil 
+              // Kelengkapan Profil
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(12),
@@ -232,7 +208,7 @@ class PanduanPenggunaan extends StatelessWidget {
                   ),
                   title: Text(
                     "Kelengkapan Profil",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -241,7 +217,10 @@ class PanduanPenggunaan extends StatelessWidget {
                     padding: EdgeInsets.only(top: 8),
                     child: Text(
                       "Panduan Untuk melengkapi profil",
-                      style: TextStyle(fontSize: 14),
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
@@ -265,15 +244,11 @@ class PanduanPenggunaan extends StatelessWidget {
                       color: Colors.blue[900],
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Icon(
-                      Icons.image,
-                      size: 24,
-                      color: Colors.white,
-                    ),
+                    child: Icon(Icons.image, size: 24, color: Colors.white),
                   ),
                   title: Text(
                     "Mengelola Portfolio",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -282,7 +257,10 @@ class PanduanPenggunaan extends StatelessWidget {
                     padding: EdgeInsets.only(top: 8),
                     child: Text(
                       "Panduan Untuk Menambah, edit dan hapus sertifikat",
-                      style: TextStyle(fontSize: 14),
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
@@ -306,15 +284,11 @@ class PanduanPenggunaan extends StatelessWidget {
                       color: Colors.blue[900],
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Icon(
-                      Icons.checklist,
-                      size: 24,
-                      color: Colors.white,
-                    ),
+                    child: Icon(Icons.checklist, size: 24, color: Colors.white),
                   ),
                   title: Text(
                     "Mengelola Sertifikat",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -323,7 +297,10 @@ class PanduanPenggunaan extends StatelessWidget {
                     padding: EdgeInsets.only(top: 8),
                     child: Text(
                       "Panduan Untuk menambah, edit dan hapus sertifikat",
-                      style: TextStyle(fontSize: 14),
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
@@ -347,16 +324,12 @@ class PanduanPenggunaan extends StatelessWidget {
                       color: Colors.blue[900],
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Icon(
-                      Icons.info,
-                      size: 24,
-                      color: Colors.white,
-                    ),
+                    child: Icon(Icons.info, size: 24, color: Colors.white),
                   ),
-                    
+
                   title: Text(
                     "Catatan Sikap Saya",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -365,7 +338,10 @@ class PanduanPenggunaan extends StatelessWidget {
                     padding: EdgeInsets.only(top: 8),
                     child: Text(
                       "Panduan Untuk melihat dan memahami catatan sikap",
-                      style: TextStyle(fontSize: 14),
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
@@ -373,7 +349,7 @@ class PanduanPenggunaan extends StatelessWidget {
               SizedBox(height: 12),
             ],
           ),
-        )
+        ),
       ),
     );
   }

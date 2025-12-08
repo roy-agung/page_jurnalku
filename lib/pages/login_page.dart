@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:page_jurnalku/pages/direktori_siswa.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -13,10 +16,10 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 3, 43, 83),
-        title: const Text(
+        backgroundColor: const Color.fromARGB(255, 5, 37, 107),
+        title: Text(
           'Jurnalku',
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
@@ -29,7 +32,6 @@ class _LoginPageState extends State<LoginPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-
               Container(
                 padding: const EdgeInsets.all(20),
                 margin: const EdgeInsets.symmetric(horizontal: 25),
@@ -49,11 +51,11 @@ class _LoginPageState extends State<LoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                         children: [
                           TextSpan(
                             text: "Masuk untuk memulai ",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
@@ -61,10 +63,10 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           TextSpan(
                             text: "Jurnalku",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 3, 43, 83),
+                              color: Color.fromARGB(255, 1, 82, 162),
                             ),
                           ),
                         ],
@@ -72,9 +74,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 35),
 
-                    const Text(
+                    Text(
                       "Username atau NIS",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(height: 5),
                     Container(
@@ -83,20 +85,26 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: Colors.grey),
                       ),
-                      child: const TextField(
+                      child: TextField(
                         decoration: InputDecoration(
                           hintText: "Masukkan Username atau NIS",
+                          hintStyle: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                          ),
                           border: InputBorder.none,
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 14),
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 14,
+                          ),
                         ),
                       ),
                     ),
                     const SizedBox(height: 15),
 
-                    const Text(
+                    Text(
                       "Password",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(height: 5),
                     Container(
@@ -109,9 +117,15 @@ class _LoginPageState extends State<LoginPage> {
                         obscureText: hidePassword,
                         decoration: InputDecoration(
                           hintText: "Masukkan Password",
+                          hintStyle: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                          ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 14),
+                            horizontal: 10,
+                            vertical: 14,
+                          ),
                           suffixIcon: IconButton(
                             icon: Icon(
                               hidePassword
@@ -131,30 +145,38 @@ class _LoginPageState extends State<LoginPage> {
 
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 3, 43, 83),
+                        backgroundColor: const Color.fromARGB(255, 19, 56, 135),
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => DirektoriSiswa(),
-                        ),
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DirektoriSiswa(),
+                          ),
                         );
                       },
-                      child: const Text(
+                      child: Text(
                         "Masuk",
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 50),
 
-                    const Text(
+                    Text(
                       "Lupa password? Hubungi guru laboran.",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         color: Colors.black,
                         fontSize: 14,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],
@@ -168,22 +190,23 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       "Menyatukan Upaya untuk Kemajuan Siswa",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                         color: Colors.black,
                       ),
                     ),
                     const SizedBox(height: 15),
-                    const Text(
+                    Text(
                       "Jurnalku adalah aplikasi cerdas yang membantu guru dan siswa dalam memantau dan mengelola kompetensi keahlian siswa secara efektif.",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontSize: 14,
                         color: Colors.black87,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     const SizedBox(height: 25),
@@ -203,17 +226,20 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.orange[200],
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Icon(Icons.school_rounded,
-                                color: Colors.orange[800], size: 30),
+                            child: Icon(
+                              Icons.school_rounded,
+                              color: Colors.orange[800],
+                              size: 30,
+                            ),
                           ),
                           const SizedBox(width: 15),
-                          const Expanded(
+                          Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "Dirancang untuk Sekolah Kami",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
                                     color: Colors.black,
@@ -222,8 +248,11 @@ class _LoginPageState extends State<LoginPage> {
                                 SizedBox(height: 5),
                                 Text(
                                   "Dikembangkan khusus untuk memenuhi kebutuhan sekolah kami dengan fokus pada kemajuan siswa kami.",
-                                  style: TextStyle(
-                                      fontSize: 13, color: Colors.black87),
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 13,
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ],
                             ),
@@ -249,17 +278,20 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.purple[200],
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const Icon(Icons.analytics,
-                                color: Colors.deepPurple, size: 30),
+                            child: const Icon(
+                              Icons.analytics,
+                              color: Colors.deepPurple,
+                              size: 30,
+                            ),
                           ),
                           const SizedBox(width: 15),
-                          const Expanded(
+                          Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "Pemantauan yang Terstruktur",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
                                     color: Colors.black,
@@ -268,8 +300,11 @@ class _LoginPageState extends State<LoginPage> {
                                 SizedBox(height: 5),
                                 Text(
                                   "Memudahkan guru dalam menyusun dan memantau daftar kompetensi keahlian yang harus dikuasai siswa.",
-                                  style: TextStyle(
-                                      fontSize: 13, color: Colors.black87),
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 13,
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ],
                             ),
@@ -295,17 +330,20 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.orange[200],
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Icon(Icons.school_rounded,
-                                color: Colors.orange[800], size: 30),
+                            child: Icon(
+                              Icons.school_rounded,
+                              color: Colors.orange[800],
+                              size: 30,
+                            ),
                           ),
                           const SizedBox(width: 15),
-                          const Expanded(
+                          Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "Dirancang untuk Sekolah Kami",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
                                     color: Colors.black,
@@ -314,8 +352,11 @@ class _LoginPageState extends State<LoginPage> {
                                 SizedBox(height: 5),
                                 Text(
                                   "Dikembangkan khusus untuk memenuhi kebutuhan sekolah kami dengan fokus pada kemajuan siswa kami.",
-                                  style: TextStyle(
-                                      fontSize: 13, color: Colors.black87),
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 13,
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ],
                             ),
@@ -341,17 +382,20 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.purple[200],
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const Icon(Icons.analytics,
-                                color: Colors.deepPurple, size: 30),
+                            child: const Icon(
+                              Icons.analytics,
+                              color: Colors.deepPurple,
+                              size: 30,
+                            ),
                           ),
                           const SizedBox(width: 15),
-                          const Expanded(
+                          Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "Pemantauan yang Terstruktur",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
                                     color: Colors.black,
@@ -360,8 +404,11 @@ class _LoginPageState extends State<LoginPage> {
                                 SizedBox(height: 5),
                                 Text(
                                   "Memudahkan guru dalam menyusun dan memantau daftar kompetensi keahlian yang harus dikuasai siswa.",
-                                  style: TextStyle(
-                                      fontSize: 13, color: Colors.black87),
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 13,
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ],
                             ),
@@ -369,7 +416,6 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -377,9 +423,11 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 40),
 
               Container(
-                color: const Color(0xFF032B53), 
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                color: const Color(0xFF032B53),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 20,
+                  horizontal: 20,
+                ),
                 child: Column(
                   children: [
                     Row(
@@ -391,17 +439,21 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(width: 15),
                         Icon(Icons.library_add, color: Colors.white, size: 24),
                         SizedBox(width: 15),
-                        Icon(Icons.video_camera_back,
-                            color: Colors.white, size: 24),
+                        Icon(
+                          Icons.video_camera_back,
+                          color: Colors.white,
+                          size: 24,
+                        ),
                       ],
                     ),
                     const SizedBox(height: 10),
-                    const Text(
+                    Text(
                       "© GEN-28 PPLG SMK Wikrama Bogor. All Rights Reserved.",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         color: Colors.white,
                         fontSize: 12,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],
