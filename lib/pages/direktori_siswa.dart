@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_jurnalku/pages/dashboard.dart';
 
 class DirektoriSiswa extends StatelessWidget {
   const DirektoriSiswa({super.key});
@@ -18,11 +19,18 @@ class DirektoriSiswa extends StatelessWidget {
               ),
             ),
             Spacer(),
-            Container(
-              decoration: BoxDecoration(color: Color(0xFF1E3A8A), borderRadius: BorderRadius.circular(8),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-              child: const Text("Dashboard", style: TextStyle(color: Colors.white, fontSize: 14),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()
+                )
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(color: Color(0xFF1E3A8A), borderRadius: BorderRadius.circular(8),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                child: const Text("Dashboard", style: TextStyle(color: Colors.white, fontSize: 14),
+                ),
               ),
             ),
           ],

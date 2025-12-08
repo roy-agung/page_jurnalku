@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:page_jurnalku/pages/pengaturan_akun.dart';
+import 'package:page_jurnalku/pages/direktori_siswa.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -138,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => PengaturanAkun(),
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => DirektoriSiswa(),
                         ),
                         );
                       },
