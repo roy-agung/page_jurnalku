@@ -1,73 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PermintaanSaksiPage extends StatelessWidget {
+  const PermintaanSaksiPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     var tanggal = 'Thursday, 13 November 2025';
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              icon: Icon(Icons.home_outlined, color: Colors.black54),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 16.0),
-            child: PopupMenuButton<String>(
-              onSelected: (value) {},
-              itemBuilder: (context) => [
-                PopupMenuItem(value: 'profile', child: Text('Profil')),
-                PopupMenuItem(value: 'logout', child: Text('Logout')),
-              ],
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Safa Fadillah',
-                        style: TextStyle(
-                          color: Colors.black87,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                        ),
-                      ),
-                      SizedBox(height: 2),
-                      Text(
-                        'PPLG XII-4',
-                        style: TextStyle(color: Colors.black54, fontSize: 11),
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 8),
-                  CircleAvatar(
-                    radius: 16,
-                    child: Text('S', style: TextStyle(fontSize: 14)),
-                  ),
-                  Icon(Icons.arrow_drop_down, color: Colors.black54),
-                ],
-              ),
-            ),
-          ),
-        ],
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1.0),
-          child: Container(color: Colors.grey.shade300, height: 1.0),
-        ),
-      ),
-
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: double.infinity, // ✅ penting
         child: Padding(
           padding: EdgeInsets.all(20.0),
           child: Column(
@@ -79,8 +22,8 @@ class PermintaanSaksiPage extends StatelessWidget {
                 children: [
                   Text(
                     'Permintaan Saksi',
-                    style: TextStyle(
-                      fontSize: 24,
+                    style: GoogleFonts.poppins(
+                      fontSize: 19,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
@@ -88,7 +31,11 @@ class PermintaanSaksiPage extends StatelessWidget {
                   SizedBox(height: 4),
                   Text(
                     'Kelola permintaan menjadi saksi dari siswa lain',
-                    style: TextStyle(fontSize: 13, color: Colors.black54),
+                    style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   SizedBox(height: 8),
                   Container(
@@ -99,9 +46,9 @@ class PermintaanSaksiPage extends StatelessWidget {
                     ),
                     child: Text(
                       tanggal,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         color: Colors.blue.shade700,
-                        fontSize: 12,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -123,14 +70,46 @@ class PermintaanSaksiPage extends StatelessWidget {
                   children: [
                     SizedBox(height: 20),
                     Card(
-                      child: ExpansionTile(
-                        title: Text("Permintaan Saksi"),
-                        subtitle: Text("Lihat Detail Permintaan"),
-                        childrenPadding: EdgeInsets.all(16.0),
-                        children: [
-                          tampilData("Pengirim", "Tanggal", "Status"),
-                          tampilData("-", "-", "-"),
-                        ],
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Theme(
+                        data: Theme.of(
+                          context,
+                        ).copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          tilePadding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          title: Text(
+                            "Permintaan Saksi",
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          subtitle: Text(
+                            "Lihat detail permintaan",
+                            style: GoogleFonts.poppins(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey[500],
+                            ),
+                          ),
+                          leading: const Icon(
+                            Icons.assignment,
+                            color: Colors.blue,
+                          ),
+                          childrenPadding: const EdgeInsets.all(16),
+                          children: [
+                            _buildHeaderRow(),
+                            const SizedBox(height: 8),
+                            _buildDataRow("Ahmad", "12 Des 2025", "Pending"),
+                            _buildDataRow("Rina", "11 Des 2025", "Disetujui"),
+                            _buildDataRow("Dimas", "10 Des 2025", "Ditolak"),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -144,31 +123,95 @@ class PermintaanSaksiPage extends StatelessWidget {
   }
 }
 
-Widget tampilData(String col1, String col2, String col3) {
-  return Table(
-    columnWidths: const {
-      0: FlexColumnWidth(2),
-      1: FlexColumnWidth(2),
-      2: FlexColumnWidth(1),
-    },
-    children: [
-      TableRow(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Text(col1),
+Widget _buildHeaderRow() {
+  return Container(
+    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+    decoration: BoxDecoration(
+      color: Colors.blue.shade50,
+      borderRadius: BorderRadius.circular(8),
+    ),
+    child: Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: Text(
+            "Pengirim",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Text(col2),
+        ),
+        Expanded(
+          flex: 2,
+          child: Text(
+            "Tanggal",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Text(col3),
+        ),
+        Expanded(
+          flex: 1,
+          child: Text(
+            "Status",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
           ),
-        ],
-      )
-    ],
+        ),
+      ],
+    ),
   );
 }
 
+Widget _buildDataRow(String col1, String col2, String col3) {
+  Color statusColor;
+
+  if (col3 == "Disetujui") {
+    statusColor = Colors.green;
+  } else if (col3 == "Ditolak") {
+    statusColor = Colors.red;
+  } else {
+    statusColor = Colors.orange;
+  }
+
+  return Container(
+    margin: const EdgeInsets.only(bottom: 6),
+    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade300),
+      borderRadius: BorderRadius.circular(8),
+    ),
+    child: Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: Text(
+            col1,
+            style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Text(
+            col2,
+            style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Text(
+            col3,
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w600,
+              color: statusColor,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}

@@ -1,47 +1,16 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:intl/intl.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-Widget tampilData(String labelData, String value) {
-  return Padding(padding: EdgeInsets.all(10),
-    child: Row(
-      children: [
-        SizedBox(
-          width: 100, child: Text(labelData),),
-          Expanded(child: Text(value),),
-      ],
-    ),
-    );
-}
-
-class ProgressBelajar extends StatelessWidget {
-  const ProgressBelajar({super.key});
+class ProgressPage extends StatelessWidget {
+  const ProgressPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 1,
-        title: Row(
-          children: [
-            Padding(padding: EdgeInsets.only(left: 160)),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text('Roy Agung Pamungkas', style: TextStyle(fontSize: 18)),
-                SizedBox(width: 10),
-                Text('PPLG XII-4', style: TextStyle(fontSize: 14)),
-              ],
-            ),
-            SizedBox(width: 10),
-            CircleAvatar(
-              radius: 20,
-              backgroundImage: AssetImage('assets/images/roy.png'),
-            ),
-          ],
-        ),
-      ),
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: double.infinity, // ✅ penting
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
@@ -49,14 +18,14 @@ class ProgressBelajar extends StatelessWidget {
             children: [
               Text(
                 "Progress Belajar",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(fontSize: 19, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
               Text(
                 "Pantau Perkembangan Kompetensi dan meteri pembelajarn Anda",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
+                style: GoogleFonts.poppins(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
                   color: Colors.grey[500],
                 ),
               ),
@@ -79,7 +48,7 @@ class ProgressBelajar extends StatelessWidget {
 
                     return Text(
                       tanggal,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: Colors.blue[900],
@@ -108,14 +77,14 @@ class ProgressBelajar extends StatelessWidget {
                         children: [
                           Text(
                             "Total Pengajuan",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 14,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           Text(
                             "5",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                             ),
@@ -130,9 +99,9 @@ class ProgressBelajar extends StatelessWidget {
                               ),
                               Text(
                                 "Semua Status",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   fontSize: 14,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                   color: Colors.blue[900],
                                 ),
                               ),
@@ -141,18 +110,18 @@ class ProgressBelajar extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        height: 40, 
-                        width: 40, 
+                        height: 40,
+                        width: 40,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20), 
-                          color: Colors.blue[50]
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.blue[50],
                         ),
                         child: Icon(
                           Icons.check_circle_outline,
                           color: Colors.blue[700],
                           size: 25,
                         ),
-                          ),
+                      ),
                     ],
                   ),
                 ),
@@ -177,14 +146,14 @@ class ProgressBelajar extends StatelessWidget {
                         children: [
                           Text(
                             "Halaman Ini",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 14,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           Text(
                             "0",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                             ),
@@ -199,9 +168,9 @@ class ProgressBelajar extends StatelessWidget {
                               ),
                               Text(
                                 "Data Ditampilkan",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   fontSize: 14,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                   color: Colors.green[600],
                                 ),
                               ),
@@ -210,18 +179,18 @@ class ProgressBelajar extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        height: 40, 
-                        width: 40, 
+                        height: 40,
+                        width: 40,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20), 
-                          color: Colors.green[50]
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.green[50],
                         ),
                         child: Icon(
                           Icons.date_range_outlined,
                           color: Colors.green[700],
                           size: 25,
                         ),
-                          ),
+                      ),
                     ],
                   ),
                 ),
@@ -246,14 +215,14 @@ class ProgressBelajar extends StatelessWidget {
                         children: [
                           Text(
                             "Status Panding",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 14,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           Text(
                             "2",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                             ),
@@ -268,9 +237,9 @@ class ProgressBelajar extends StatelessWidget {
                               ),
                               Text(
                                 "Perlu Validasi",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   fontSize: 14,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                   color: Colors.deepOrange[700],
                                 ),
                               ),
@@ -279,18 +248,18 @@ class ProgressBelajar extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        height: 40, 
-                        width: 40, 
+                        height: 40,
+                        width: 40,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20), 
-                          color: Colors.deepOrange[50]
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.deepOrange[50],
                         ),
                         child: Icon(
                           Icons.lock_clock,
                           color: Colors.deepOrange[700],
                           size: 25,
                         ),
-                          ),
+                      ),
                     ],
                   ),
                 ),
@@ -315,14 +284,14 @@ class ProgressBelajar extends StatelessWidget {
                         children: [
                           Text(
                             "Total Halaman",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 14,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           Text(
                             "1",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                             ),
@@ -337,9 +306,9 @@ class ProgressBelajar extends StatelessWidget {
                               ),
                               Text(
                                 "Navigasi Tersedia",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   fontSize: 14,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                   color: Colors.purple[700],
                                 ),
                               ),
@@ -348,104 +317,82 @@ class ProgressBelajar extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        height: 40, 
-                        width: 40, 
+                        height: 40,
+                        width: 40,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20), 
-                          color: Colors.purple[50]
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.purple[50],
                         ),
                         child: Icon(
                           Icons.navigation_outlined,
                           color: Colors.purple[700],
                           size: 25,
                         ),
-                          ),
+                      ),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
-              Card(
-                child: ExpansionTile(
-                  title: Text("Project Work"),
-                  subtitle: Text("Kompetensi dan materi pembelajaran"),
-                  childrenPadding: EdgeInsets.all(16.0),
-                  children: [
-                    tampilData("Kopetensi", "-"),
-                    tampilData("Guru", "-"),
-                    tampilData("Tanggal", "-"),
-                    tampilData("Status", "-"),
-                    tampilData("Catatan Guru", "-"),
-                    tampilData("Catatan Siswa", "-"),
-                  ],
-                  
+              SizedBox(height: 10),
+              kategoriSection("Project Work", [
+                laporanCard(
+                  judul: "Aplikasi Kasir",
+                  tanggal: "12 Nov 2025",
+                  status: "Disetujui",
                 ),
-              ),
-              SizedBox(height: 10,),
-              Card(
-                child: ExpansionTile(
-                  title: Text("Mobile Apps"),
-                  subtitle: Text("Kompetensi dan materi pembelajaran"),
-                  childrenPadding: EdgeInsets.all(16.0),
-                  children: [
-                    tampilData("Kopetensi", "-"),
-                    tampilData("Guru", "-"),
-                    tampilData("Tanggal", "-"),
-                    tampilData("Status", "-"),
-                    tampilData("Catatan Guru", "-"),
-                    tampilData("Catatan Siswa", "-"),
-                  ],
-                  
+                laporanCard(
+                  judul: "Website Sekolah",
+                  tanggal: "10 Nov 2025",
+                  status: "Pending",
                 ),
-              ),
-              SizedBox(height: 10,),
-              Card(
-                child: ExpansionTile(
-                  title: Text("UKK (Ujian Kopetensi Keahlian)"),
-                  subtitle: Text("Kompetensi dan materi pembelajaran"),
-                  childrenPadding: EdgeInsets.all(16.0),
-                  children: [
-                    tampilData("Kopetensi", "-"),
-                    tampilData("Guru", "-"),
-                    tampilData("Tanggal", "-"),
-                    tampilData("Status", "-"),
-                    tampilData("Catatan Guru", "-"),
-                    tampilData("Catatan Siswa", "-"),
-                  ],
-                  
+              ]),
+
+              kategoriSection("Mobile Apps", [
+                laporanCard(
+                  judul: "Aplikasi Absensi",
+                  tanggal: "09 Nov 2025",
+                  status: "Ditolak",
                 ),
-              ),
-              SizedBox(height: 10,),
-              Card(
-                child: ExpansionTile(
-                  title: Text("Gim"),
-                  subtitle: Text("Kompetensi dan materi pembelajaran"),
-                  childrenPadding: EdgeInsets.all(16.0),
-                  children: [
-                    tampilData("Kopetensi", "-"),
-                    tampilData("Guru", "-"),
-                    tampilData("Tanggal", "-"),
-                    tampilData("Status", "-"),
-                    tampilData("Catatan Guru", "-"),
-                    tampilData("Catatan Siswa", "-"),
-                  ],
-                  
+              ]),
+
+              kategoriSection("UKK", [
+                laporanCard(
+                  judul: "Aplikasi Kasir",
+                  tanggal: "12 Nov 2025",
+                  status: "Disetujui",
                 ),
-              ),
-              SizedBox(height: 10,),
-              Card(
-                child: ExpansionTile(
-                  title: Text("Lainnya"),
-                  subtitle: Text("Kompetensi dan materi tambahan"),
-                  childrenPadding: EdgeInsets.all(16.0),
-                  children: [
-                    tampilData("Kopetensi", "projek uji kelayakan"),
-                    tampilData("Tanggal", "26 Nov 2025"),
-                    tampilData("Status", "Tidak ada catatan"),
-                  ],
-                  
+                laporanCard(
+                  judul: "Website Sekolah",
+                  tanggal: "10 Nov 2025",
+                  status: "Pending",
                 ),
-              ),
+              ]),
+
+              kategoriSection("Gim", [
+                laporanCard(
+                  judul: "Aplikasi Kasir",
+                  tanggal: "12 Nov 2025",
+                  status: "Disetujui",
+                ),
+                laporanCard(
+                  judul: "Website Sekolah",
+                  tanggal: "10 Nov 2025",
+                  status: "Pending",
+                ),
+              ]),
+
+              kategoriSection("Lainnya", [
+                laporanCard(
+                  judul: "Aplikasi Kasir",
+                  tanggal: "12 Nov 2025",
+                  status: "Disetujui",
+                ),
+                laporanCard(
+                  judul: "Website Sekolah",
+                  tanggal: "10 Nov 2025",
+                  status: "Pending",
+                ),
+              ]),
             ],
           ),
         ),
@@ -453,3 +400,115 @@ class ProgressBelajar extends StatelessWidget {
     );
   }
 }
+
+Widget kategoriSection(String title, List<Widget> items) {
+  return Container(
+    margin: const EdgeInsets.only(bottom: 16),
+    child: Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            const SizedBox(height: 12),
+            ...items,
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget laporanCard({
+  required String judul,
+  required String tanggal,
+  required String status,
+}) {
+  Color statusColor;
+
+  switch (status) {
+    case "Disetujui":
+      statusColor = Colors.green;
+      break;
+    case "Pending":
+      statusColor = Colors.orange;
+      break;
+    case "Ditolak":
+      statusColor = Colors.red;
+      break;
+    default:
+      statusColor = Colors.grey;
+  }
+
+  return Container(
+    margin: const EdgeInsets.only(bottom: 10),
+    padding: const EdgeInsets.all(14),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(12),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.04),
+          blurRadius: 4,
+          offset: const Offset(0, 2),
+        ),
+      ],
+    ),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        // Icon kiri
+        Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.blue.shade50,
+            shape: BoxShape.circle,
+          ),
+          child: const Icon(Icons.assignment, color: Colors.blue),
+        ),
+        const SizedBox(width: 12),
+
+        // Konten teks
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                judul,
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 15,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                tanggal,
+                style: GoogleFonts.poppins(
+                  fontSize: 13,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        // Status
+        Text(
+          status,
+          style: GoogleFonts.poppins(
+            fontSize: 13,
+            fontWeight: FontWeight.bold,
+            color: statusColor,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+

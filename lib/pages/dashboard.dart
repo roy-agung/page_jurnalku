@@ -1,60 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:page_jurnalku/pages/progress.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+class DashboardPage extends StatefulWidget {
+  const DashboardPage({super.key});
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  State<DashboardPage> createState() => _DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _DashboardState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        title: Icon(Icons.home_outlined),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 15),
-            child: Row(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "Bintang Novian Pramesrawan",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      "PPLG XII-4",
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  ],
-                ),
-                SizedBox(width: 8),
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/roy.png'),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: double.infinity, // ✅ penting
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-              decoration: BoxDecoration(
-                color: Color(0xFF1565C0),
+              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color(0xFF0A2E6D), // Biru tua soft (lebih pekat tapi halus)
+                    Color(0xFF1E88E5), // Biru sedang soft
+                  ],
+                ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,8 +37,8 @@ class _DashboardState extends State<Dashboard> {
                   Text(
                     "Selamat Datang di Jurnalku!",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 25,
+                    style: GoogleFonts.poppins(
+                      fontSize: 22,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -72,22 +47,29 @@ class _DashboardState extends State<Dashboard> {
                   Text(
                     "Solusi cerdas untuk memantau perkembangan kompetensi siswa secara efektif",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white70,
-                    ),
+                    style: GoogleFonts.poppins(fontSize: 14, color: Colors.white70,
+                        fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
             ),
+
             SizedBox(height: 20),
             _buildInfoCard(
-              color: Colors.blueAccent[400],
               title: "Apa itu Jurnalku?",
               text:
                   "Jurnalku adalah aplikasi cerdas yang membantu guru dan siswa dalam memantau dan mengelola kompetensi keahlian siswa secara efektif, terstruktur, dan real-time.",
               textColor: Colors.white,
+              gradient: const LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color(0xFF0A2E6D), // Biru tua
+                  Color(0xFF1E88E5), // Biru sedang
+                ],
+              ),
             ),
+
             SizedBox(height: 30),
             _buildFeatureCard(
               icon: Icons.school,
@@ -117,7 +99,7 @@ class _DashboardState extends State<Dashboard> {
                 children: [
                   Text(
                     "MENU APLIKASI",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
@@ -125,23 +107,44 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   SizedBox(height: 12),
                   _buildMenuSection([
-                    _buildMenuItem(Icons.person_outline, "Profil",
-                        "Lihat dan kelola profilmu di sini."),
-                    _buildMenuItem(Icons.folder_open, "Portofolio",
-                        "Lihat dan kelola portofolio kompetensimu di sini."),
-                    _buildMenuItem(Icons.workspace_premium, "Sertifikat",
-                        "Lihat dan unduh sertifikat kompetensimu di sini."),
+                    _buildMenuItem(
+                      Icons.person_outline,
+                      "Profil",
+                      "Lihat dan kelola profilmu di sini.",
+                    ),
+                    _buildMenuItem(
+                      Icons.folder_open,
+                      "Portofolio",
+                      "Lihat dan kelola portofolio kompetensimu di sini.",
+                    ),
+                    _buildMenuItem(
+                      Icons.workspace_premium,
+                      "Sertifikat",
+                      "Lihat dan unduh sertifikat kompetensimu di sini.",
+                    ),
                   ]),
                   SizedBox(height: 16),
                   _buildMenuSection([
-                    _buildMenuItem(Icons.book_outlined, "Jurnal Pembiasaan",
-                        "Catat dan pantau kegiatan pembiasaan harianmu."),
-                    _buildMenuItem(Icons.people_outline, "Permintaan Saksi",
-                        "Lihat teman yang mengajukan permintaan saksi."),
-                    _buildMenuItem(Icons.trending_up_outlined, "Progress",
-                        "Pantau perkembangan kompetensimu di sini."),
-                    _buildMenuItem(Icons.warning, "Catatan Sikap",
-                        "Lihat catatan sikap dan perilaku dari guru."),
+                    _buildMenuItem(
+                      Icons.book_outlined,
+                      "Jurnal Pembiasaan",
+                      "Catat dan pantau kegiatan pembiasaan harianmu.",
+                    ),
+                    _buildMenuItem(
+                      Icons.people_outline,
+                      "Permintaan Saksi",
+                      "Lihat teman yang mengajukan permintaan saksi.",
+                    ),
+                    _buildMenuItem(
+                      Icons.trending_up_outlined,
+                      "Progress",
+                      "Pantau perkembangan kompetensimu di sini.",
+                    ),
+                    _buildMenuItem(
+                      Icons.warning,
+                      "Catatan Sikap",
+                      "Lihat catatan sikap dan perilaku dari guru.",
+                    ),
                   ]),
                 ],
               ),
@@ -153,7 +156,7 @@ class _DashboardState extends State<Dashboard> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "STATISTIK KOMPETENSI",
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
@@ -235,7 +238,7 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     Text(
                       "Progress Akademik",
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                         color: Colors.black87,
@@ -281,15 +284,15 @@ class _DashboardState extends State<Dashboard> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ProgressBelajar(),
+                                builder: (context) => ProgressPage(),
                               ),
                             );
                           },
                           child: Text(
                             "Lihat Progress Kamu",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 15,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.bold,
                               color: Colors.blue[800],
                             ),
                           ),
@@ -301,10 +304,11 @@ class _DashboardState extends State<Dashboard> {
                     SizedBox(height: 12),
                     Text(
                       "Belum ada kompetensi / progress",
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontSize: 14,
                         color: Colors.blue[600],
                         fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     SizedBox(height: 16),
@@ -312,9 +316,10 @@ class _DashboardState extends State<Dashboard> {
                       children: [
                         Text(
                           "Lihat semua Kompetensi",
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                             color: Colors.black87,
                             fontWeight: FontWeight.w500,
+                            fontSize: 14
                           ),
                         ),
                         SizedBox(width: 6),
@@ -329,10 +334,8 @@ class _DashboardState extends State<Dashboard> {
             Center(
               child: Text(
                 "© GEN-28 PPLG SMK Wikrama Bogor. All Rights Reserved.",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.blueGrey,
-                ),
+                style: GoogleFonts.poppins(fontSize: 14, color: Colors.blueGrey,
+                    fontWeight: FontWeight.w500),
               ),
             ),
           ],
@@ -342,43 +345,48 @@ class _DashboardState extends State<Dashboard> {
   }
 
   Widget _buildInfoCard({
-    required Color? color,
+    Color? color,
+    Gradient? gradient,
     required String title,
     required String text,
     Color textColor = Colors.white,
   }) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         decoration: BoxDecoration(
-          color: color,
+          gradient: gradient,
+          color: gradient == null ? color : null,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 5,
-              offset: Offset(0, 3),
+              color: Colors.black.withOpacity(0.08),
+              blurRadius: 6,
+              offset: const Offset(0, 3),
             ),
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: textColor,
-                )),
-            SizedBox(height: 12),
+            Text(
+              title,
+              style: GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: textColor,
+              ),
+            ),
+            const SizedBox(height: 12),
             Text(
               text,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 15,
                 height: 1.5,
                 color: textColor.withOpacity(0.9),
+                fontWeight: FontWeight.w500,
               ),
             ),
           ],
@@ -415,16 +423,13 @@ class _DashboardState extends State<Dashboard> {
             SizedBox(height: 12),
             Text(
               title,
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-              ),
+              style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
               description,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 15),
+              style: GoogleFonts.poppins(fontSize: 15),
             ),
           ],
         ),
@@ -447,9 +452,7 @@ class _DashboardState extends State<Dashboard> {
           ),
         ],
       ),
-      child: Column(
-        children: children,
-      ),
+      child: Column(children: children),
     );
   }
 
@@ -458,12 +461,11 @@ class _DashboardState extends State<Dashboard> {
       children: [
         ListTile(
           leading: Icon(icon, color: Colors.blue[700]),
-          title: Text(title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              )),
-          subtitle: Text(subtitle),
+          title: Text(
+            title,
+            style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 15),
+          ),
+          subtitle: Text(subtitle, style: GoogleFonts.poppins(fontSize: 14, color: Colors.black54, fontWeight: FontWeight.w500)),
           trailing: Icon(Icons.arrow_forward_ios, size: 16),
           contentPadding: EdgeInsets.zero,
         ),
@@ -493,7 +495,7 @@ class _DashboardState extends State<Dashboard> {
             color: Colors.black12.withOpacity(0.05),
             blurRadius: 8,
             offset: Offset(0, 3),
-          )
+          ),
         ],
       ),
       child: Row(
@@ -505,16 +507,16 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 Text(
                   title,
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 15,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.bold,
                     color: Colors.black87,
                   ),
                 ),
                 SizedBox(height: 6),
                 Text(
                   value,
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: valueColor,
@@ -527,28 +529,21 @@ class _DashboardState extends State<Dashboard> {
                     SizedBox(width: 6),
                     Text(
                       label,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontSize: 14,
                         color: labelColor,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),
           Container(
             padding: EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: iconBg,
-            ),
-            child: Icon(
-              icon,
-              color: iconColor,
-              size: 24,
-            ),
+            decoration: BoxDecoration(shape: BoxShape.circle, color: iconBg),
+            child: Icon(icon, color: iconColor, size: 24),
           ),
         ],
       ),
@@ -563,16 +558,10 @@ class _DashboardState extends State<Dashboard> {
           children: [
             Icon(Icons.circle, size: 12, color: color),
             SizedBox(width: 8),
-            Text(
-              label,
-              style: TextStyle(fontSize: 14, color: Colors.black87),
-            ),
+            Text(label, style: GoogleFonts.poppins(fontSize: 14, color: Colors.black87, fontWeight: FontWeight.w500)),
           ],
         ),
-        Text(
-          value,
-          style: TextStyle(fontSize: 14),
-        ),
+        Text(value, style: GoogleFonts.poppins(fontSize: 14, color: Colors.black87, fontWeight: FontWeight.w500)),
       ],
     );
   }
