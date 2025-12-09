@@ -14,7 +14,7 @@ class _DashboardState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        width: double.infinity, // ✅ penting
+        width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -26,8 +26,8 @@ class _DashboardState extends State<DashboardPage> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Color(0xFF0A2E6D), // Biru tua soft (lebih pekat tapi halus)
-                    Color(0xFF1E88E5), // Biru sedang soft
+                    Color(0xFF0A2E6D), 
+                    Color(0xFF1E88E5), 
                   ],
                 ),
               ),
@@ -64,8 +64,8 @@ class _DashboardState extends State<DashboardPage> {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Color(0xFF0A2E6D), // Biru tua
-                  Color(0xFF1E88E5), // Biru sedang
+                  Color(0xFF0A2E6D), 
+                  Color(0xFF1E88E5), 
                 ],
               ),
             ),
