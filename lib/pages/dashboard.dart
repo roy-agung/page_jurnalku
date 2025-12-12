@@ -20,37 +20,42 @@ class _DashboardState extends State<DashboardPage> {
           children: [
             Container(
               width: double.infinity,
+              height: 300,
               padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Color(0xFF0A2E6D), 
-                    Color(0xFF1E88E5), 
+              decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage('assets/images/bgsecondary.jpg'), fit: BoxFit.cover),
+                // gradient: LinearGradient(
+                //   begin: Alignment.topLeft,
+                //   end: Alignment.bottomRight,
+                //   colors: [
+                //     Color(0xFF0A2E6D), 
+                //     Color(0xFF1E88E5), 
+                //   ],
+                // ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.only(top: 60),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Selamat Datang di Jurnalku!",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 12),
+                    Text(
+                      "Solusi cerdas untuk memantau perkembangan kompetensi siswa secara efektif",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(fontSize: 14, color: Colors.white70,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ],
                 ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Selamat Datang di Jurnalku!",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 12),
-                  Text(
-                    "Solusi cerdas untuk memantau perkembangan kompetensi siswa secara efektif",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(fontSize: 14, color: Colors.white70,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
               ),
             ),
 
@@ -58,7 +63,7 @@ class _DashboardState extends State<DashboardPage> {
             _buildInfoCard(
               title: "Apa itu Jurnalku?",
               text:
-                  "Jurnalku adalah aplikasi cerdas yang membantu guru dan siswa dalam memantau dan mengelola kompetensi keahlian siswa secara efektif, terstruktur, dan real-time.",
+                  "Jurnalku adalah aplikasi cerdas yang membantu guru dan siswa dalam memantau dan mengelola kompetensi keahlian siswa secara efektif, terstruktur, dan real-time. Dengan fitur lengkap, prises pemantauan menjadi mudah dan transparan.",
               textColor: Colors.white,
               gradient: const LinearGradient(
                 begin: Alignment.topLeft,
@@ -102,7 +107,7 @@ class _DashboardState extends State<DashboardPage> {
                     style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black87,
+                      color: Colors.grey[700],
                     ),
                   ),
                   SizedBox(height: 12),
@@ -281,7 +286,7 @@ class _DashboardState extends State<DashboardPage> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => ProgressPage(),

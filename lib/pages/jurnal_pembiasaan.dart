@@ -1,58 +1,22 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 class JurnalPembiasaanPage extends StatelessWidget {
   const JurnalPembiasaanPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        title: Icon(Icons.home_outlined),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 15),
-            child: Row(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "Bintang Novian Pramesrawan",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      "PPLG XII-4",
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  ],
-                ),
-                SizedBox(width: 8),
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/bintang.jpg'),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Jurnal Pembiasaan",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            const Text(
+            Text(
               "NOVEMBER - 2025",
-              style: TextStyle(fontSize: 16),
+              style: GoogleFonts.poppins(fontSize: 16),
             ),
             const SizedBox(height: 15),
             Row(
@@ -64,17 +28,17 @@ class JurnalPembiasaanPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8)),
                   ),
                   onPressed: () {},
-                  child: const Text(
+                  child: Text(
                     "← Bulan Sebelumnya",
-                    style: TextStyle(color: Colors.white),
+                    style: GoogleFonts.poppins(color: Colors.white),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 25),
-            const Text(
+            Text(
               "A. Pembiasaan harian",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
             const Row(
@@ -108,7 +72,7 @@ class JurnalPembiasaanPage extends StatelessWidget {
                       Center(
                         child: Text(
                           (i + 1).toString().padLeft(2, '0'),
-                          style: const TextStyle(
+                          style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -128,9 +92,9 @@ class JurnalPembiasaanPage extends StatelessWidget {
               ),
               child: ExpansionTile(
                 tilePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                title: const Text(
+                title: Text(
                   "B. Pekerjaan yang dilakukan",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 initiallyExpanded: true,
                 children: [
@@ -146,9 +110,9 @@ class JurnalPembiasaanPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           "Belum ada pekerjaan yang diinput.",
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                             fontStyle: FontStyle.italic,
                             color: Colors.grey,
                           ),
@@ -156,9 +120,9 @@ class JurnalPembiasaanPage extends StatelessWidget {
                         const SizedBox(height: 12),
                         GestureDetector(
                           onTap: () {},
-                          child: const Text(
+                          child: Text(
                             "+ Tambah Pekerjaan",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               color: Colors.blue,
                               fontWeight: FontWeight.w600,
                             ),
@@ -182,9 +146,9 @@ class JurnalPembiasaanPage extends StatelessWidget {
               ),
               child: ExpansionTile(
                 tilePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                title: const Text(
+                title: Text(
                   "C. Materi yang dipelajari",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 initiallyExpanded: true,
                 children: [
@@ -200,19 +164,19 @@ class JurnalPembiasaanPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           "Belum ada materi yang diinput.",
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                             fontStyle: FontStyle.italic,
                             color: Colors.grey,
                           ),
                         ),
-                        const SizedBox(height: 12),
+                        SizedBox(height: 12),
                         GestureDetector(
                           onTap: () {},
-                          child: const Text(
+                          child: Text(
                             "+ Tambah Materi",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               color: Colors.blue,
                               fontWeight: FontWeight.w600,
                             ),
@@ -253,9 +217,9 @@ class JurnalPembiasaanPage extends StatelessWidget {
               ),
               child: ExpansionTile(
                 tilePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                title: const Text(
+                title: Text(
                   "D. Poin",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 initiallyExpanded: true,
                 children: [
@@ -317,17 +281,17 @@ class JurnalPembiasaanPage extends StatelessWidget {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
+                            children: [
                               Text(
                                 "Jumlah keseluruhan poin",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14,
                                 ),
                               ),
                               Text(
                                 "19",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                   color: Colors.blue,
@@ -346,8 +310,7 @@ class JurnalPembiasaanPage extends StatelessWidget {
             const SizedBox(height: 30),
           ],
         ),
-      ),
-    );
+      );
   }
 
   Widget _buildWeekSection({
@@ -371,7 +334,7 @@ class JurnalPembiasaanPage extends StatelessWidget {
             children: [
               Text(
                 weekTitle,
-                style: const TextStyle(
+                style: GoogleFonts.poppins(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
                 ),
@@ -384,7 +347,7 @@ class JurnalPembiasaanPage extends StatelessWidget {
                 ),
                 child: Text(
                   "Total: $totalPoin",
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                     fontWeight: FontWeight.bold,
                     fontSize: 13,
                     color: Colors.blue.shade700,
@@ -423,12 +386,12 @@ class JurnalPembiasaanPage extends StatelessWidget {
         Expanded(
           child: Text(
             title,
-            style: const TextStyle(fontSize: 12),
+            style: GoogleFonts.poppins(fontSize: 12),
           ),
         ),
         Text(
           poin,
-          style: const TextStyle(
+          style: GoogleFonts.poppins(
             fontSize: 12,
             fontWeight: FontWeight.w600,
           ),

@@ -18,7 +18,10 @@ class ProgressPage extends StatelessWidget {
             children: [
               Text(
                 "Progress Belajar",
-                style: GoogleFonts.poppins(fontSize: 19, fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               SizedBox(height: 10),
               Text(
@@ -31,13 +34,11 @@ class ProgressPage extends StatelessWidget {
               ),
               SizedBox(height: 15),
               Container(
-                height: 40,
-                width: 200,
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.blue[50],
+                  color: Colors.blue.shade50,
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                alignment: Alignment.center,
                 child: StreamBuilder(
                   stream: Stream.periodic(Duration(seconds: 1)),
                   builder: (context, shapshot) {
@@ -413,7 +414,10 @@ Widget kategoriSection(String title, List<Widget> items) {
           children: [
             Text(
               title,
-              style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 16),
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
             ),
             const SizedBox(height: 12),
             ...items,
@@ -511,4 +515,3 @@ Widget laporanCard({
     ),
   );
 }
-
