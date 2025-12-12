@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:async';
+import 'package:intl/intl.dart';
 
 class PermintaanSaksiPage extends StatelessWidget {
   const PermintaanSaksiPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var tanggal = 'Thursday, 13 November 2025';
 
     return SingleChildScrollView(
       child: SizedBox(
@@ -44,14 +45,24 @@ class PermintaanSaksiPage extends StatelessWidget {
                       color: Colors.blue.shade50,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Text(
+                    child: StreamBuilder(
+                  stream: Stream.periodic(Duration(seconds: 1)),
+                  builder: (context, shapshot) {
+                    final now = DateTime.now();
+                    final tanggal = DateFormat(
+                      'EEEE, dd MMMM yyyy',
+                    ).format(now);
+
+                    return Text(
                       tanggal,
                       style: GoogleFonts.poppins(
-                        color: Colors.blue.shade700,
                         fontSize: 14,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.blue[900],
                       ),
-                    ),
+                    );
+                  },
+                ),
                   ),
                 ],
               ),

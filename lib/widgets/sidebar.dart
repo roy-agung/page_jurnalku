@@ -8,6 +8,9 @@ import '../pages/catatan_sikap.dart';
 import '../pages/pengaturan_akun.dart';
 import '../pages/panduan_penggunaan.dart';
 import '../pages/permintaan_saksi_page.dart';
+import '../pages/profile_page.dart';
+import '../pages/jurnal_pembiasaan.dart';
+import '../pages/direktori_siswa.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -26,11 +29,15 @@ class _MainLayoutState extends State<MainLayout>
 
   final List<Widget> _pages = [
     DashboardPage(),
+    DirektoriSiswaPage(),
+    ProfilePage(),
+    JurnalPembiasaanPage(),
     PermintaanSaksiPage(),
     ProgressPage(),
     CatatanSikapPage(),
     PanduanPenggunaanPage(),
     PengaturanAkunPage(),
+    
   ];
 
   @override
@@ -159,6 +166,8 @@ class _MainLayoutState extends State<MainLayout>
                 child: Column(
                   children: [
                     _submenu("Dashboard", 0),
+                    _submenu("Jelajahi", 1),
+                    _submenu("Profile", 2),
                   ],
                 ),
               ),
@@ -166,14 +175,16 @@ class _MainLayoutState extends State<MainLayout>
               const Divider(height: 24, thickness: 1, indent: 16, endIndent: 16),
 
               // ===== MENU ITEMS =====
-              _menuItem("Permintaan Saksi", Icons.assignment_rounded, 1),
-              _menuItem("Progress", Icons.bar_chart_rounded, 2),
-              _menuItem("Catatan Sikap", Icons.edit_note_rounded, 3),
+              _menuItem("Jurnal Pembiasaan", Icons.book_outlined, 3),
+              _menuItem("Permintaan Saksi", Icons.assignment_rounded, 4),
+              _menuItem("Progress", Icons.bar_chart_rounded, 5),
+              _menuItem("Catatan Sikap", Icons.edit_note_rounded, 6),
               const Divider(height: 24, thickness: 1, indent: 16, endIndent: 16),
-              _menuItem("Panduan Penggunaan", Icons.help_outline_rounded, 4),
-              _menuItem("Pengaturan Akun", Icons.settings_rounded, 5),
+              _menuItem("Panduan Penggunaan", Icons.help_outline_rounded, 7),
+              _menuItem("Pengaturan Akun", Icons.settings_outlined, 8),
+              
               const SizedBox(height: 16),
-              _menuItem("Logout", Icons.logout_rounded, -1),
+              _menuItem("Logout", Icons.logout_outlined, -1),
             ],
           ),
         ),

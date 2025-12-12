@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class Profile extends StatelessWidget {
-  const Profile({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   static const Color primaryBlue = Color(0xFF0B4C8C);
   static const Color accentGreen = Color(0xFF18A85B);
@@ -27,7 +28,7 @@ class Profile extends StatelessWidget {
                   borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
                   image: const DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage('assets/images/wikrama.png'),
+                    image: AssetImage('assets/images/wikrama.jpg'),
                   ),
                 ),
               ),
@@ -87,15 +88,15 @@ class Profile extends StatelessWidget {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         'Bintang Novian Pramesrawan',
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                        style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w700),
                       ),
                       SizedBox(height: 6),
                       Text(
                         '12309572 | PPLG XII-4 | Tajur 6',
-                        style: TextStyle(color: Colors.black54),
+                        style: GoogleFonts.poppins(color: Colors.black54),
                       ),
                     ],
                   ),
@@ -129,7 +130,7 @@ class Profile extends StatelessWidget {
           children: [
             Icon(icon, size: 36, color: iconColor ?? Colors.brown),
             const SizedBox(height: 10),
-            Text(text, style: const TextStyle(color: Colors.black54)),
+            Text(text, style: GoogleFonts.poppins(color: Colors.black54)),
           ],
         ),
       ),
@@ -147,9 +148,9 @@ class Profile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Curriculum Vitae', style: TextStyle(fontWeight: FontWeight.w600)),
+                Text('Curriculum Vitae', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
                 const SizedBox(height: 6),
-                const Text('Dokumen CV siswa', style: TextStyle(color: Colors.black54)),
+                Text('Dokumen CV siswa', style: GoogleFonts.poppins(color: Colors.black54)),
                 const SizedBox(height: 12),
                 Row(
                   children: [
@@ -157,7 +158,7 @@ class Profile extends StatelessWidget {
                       child: ElevatedButton.icon(
                         onPressed: () => _showMessage(context, 'Lihat CV'),
                         icon: const Icon(Icons.description_outlined, color: Colors.white),
-                        label: const Text('Lihat CV', style: const TextStyle(color: Colors.white)),
+                        label: Text('Lihat CV', style: GoogleFonts.poppins(color: Colors.white)),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: primaryBlue,
                           padding: const EdgeInsets.symmetric(vertical: 14),
@@ -189,9 +190,9 @@ class Profile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Kartu Pelajar', style: TextStyle(fontWeight: FontWeight.w600)),
+                Text('Kartu Pelajar', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
                 const SizedBox(height: 6),
-                const Text('Kartu identitas siswa', style: TextStyle(color: Colors.black54)),
+                Text('Kartu identitas siswa', style: GoogleFonts.poppins(color: Colors.black54)),
                 const SizedBox(height: 12),
                 Row(
                   children: [
@@ -199,7 +200,7 @@ class Profile extends StatelessWidget {
                       child: ElevatedButton.icon(
                         onPressed: () => _showMessage(context, 'Lihat Kartu Pelajar'),
                         icon: const Icon(Icons.credit_card, color: Colors.white),
-                        label: const Text('Lihat Kartu Pelajar', style: const TextStyle(color: Colors.white)),
+                        label: Text('Lihat Kartu Pelajar', style: GoogleFonts.poppins(color: Colors.white)),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: accentGreen,
                           padding: const EdgeInsets.symmetric(vertical: 14),
@@ -221,13 +222,13 @@ class Profile extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Row(
-                  children: const [
+                  children: [
                     Icon(Icons.info_outline, color: Colors.orange, size: 18),
                     SizedBox(width: 8),
                     Expanded(
                       child: Text(
                         'Kartu pelajar dapat dilihat oleh anda dan guru',
-                        style: TextStyle(color: Colors.black54),
+                        style: GoogleFonts.poppins(color: Colors.black54),
                       ),
                     )
                   ],
@@ -244,43 +245,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-      child: Scaffold(
-        backgroundColor: const Color(0xFFF6F8FB),
-        appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        title: Icon(Icons.home_outlined),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 15),
-            child: Row(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "Bintang Novian Pramesrawan",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      "PPLG XII-4",
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  ],
-                ),
-                SizedBox(width: 8),
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/bintang.jpg'),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-        body: ListView(
+      child: ListView(
           padding: const EdgeInsets.all(16.0),
           children: [
             Align(
@@ -288,7 +253,7 @@ class Profile extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: () => Navigator.of(context).maybePop(),
                 icon: const Icon(Icons.arrow_back, color: Colors.white),
-                label: const Text('Kembali', style: TextStyle(color: Colors.white)),
+                label: Text('Kembali', style: GoogleFonts.poppins(color: Colors.white)),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryBlue,
                   padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
@@ -323,7 +288,7 @@ class Profile extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const Text('Portfolio Terbaru', style: TextStyle(fontWeight: FontWeight.w600)),
+                                    Text('Portfolio Terbaru', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
                                     Row(
                                       children: [
                                         TextButton.icon(
@@ -357,7 +322,7 @@ class Profile extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const Text('Sertifikat Terbaru', style: TextStyle(fontWeight: FontWeight.w600)),
+                                    Text('Sertifikat Terbaru', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
                                     Row(
                                       children: [
                                         TextButton.icon(
@@ -381,21 +346,21 @@ class Profile extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.only(bottom: 8),
-                            child: Text('Dokumen', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                            child: Text('Dokumen', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
                           ),
                         ),
                         _documentsSection(context),
                         const SizedBox(height: 16),
                         // Media Sosial card
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.only(bottom: 8, top: 8),
-                            child: Text('Media Sosial', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                            child: Text('Media Sosial', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
                           ),
                         ),
                         Card(
@@ -403,8 +368,8 @@ class Profile extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 24),
                             child: Column(
-                              children: const [
-                                Text('Media sosial akan ditampilkan di sini', style: TextStyle(color: Colors.black54)),
+                              children: [
+                                Text('Media sosial akan ditampilkan di sini', style: GoogleFonts.poppins(color: Colors.black54)),
                               ],
                             ),
                           ),
@@ -427,7 +392,7 @@ class Profile extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const Text('Portfolio Terbaru', style: TextStyle(fontWeight: FontWeight.w600)),
+                                    Text('Portfolio Terbaru', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
                                     Row(
                                       children: [
                                         TextButton.icon(
@@ -468,7 +433,7 @@ class Profile extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const Text('Sertifikat Terbaru', style: TextStyle(fontWeight: FontWeight.w600)),
+                                    Text('Sertifikat Terbaru', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
                                     Row(
                                       children: [
                                         TextButton.icon(
@@ -498,7 +463,6 @@ class Profile extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }
