@@ -6,6 +6,8 @@ import '../pages/dashboard.dart';
 import '../pages/progress.dart';
 import '../pages/catatan_sikap.dart';
 import '../pages/pengaturan_akun.dart';
+import '../pages/login_page.dart';
+import '../services/session_manager.dart';
 import '../pages/panduan_penggunaan.dart';
 import '../pages/permintaan_saksi_page.dart';
 import '../pages/profile_page.dart';
@@ -255,7 +257,16 @@ class _MainLayoutState extends State<MainLayout>
                   fontWeight: isActive ? FontWeight.bold : FontWeight.normal)),
           onTap: () {
             Navigator.pop(context);
-            if (index != -1) _changePage(index);
+            if (index == -1) {
+              SessionManager.clear();
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (_) => const LoginPage()),
+                (route) => false,
+              );
+            } else {
+              _changePage(index);
+            }
           },
         ),
       ),
