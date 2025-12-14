@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import '../widgets/sidebar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+
+import '../services/session_manager.dart';
+import '../widgets/sidebar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,7 +15,94 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _nisController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   bool hidePassword = true;
+  bool _isLoading = false;
+
+  @override
+  void dispose() {
+    _nisController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _showAlert(String message) {
+    return showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Login gagal'),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _login() async {
+    if (_isLoading) return;
+
+    final nis = _nisController.text.trim();
+    final password = _passwordController.text;
+
+    if (nis.isEmpty || password.isEmpty) {
+      await _showAlert('NIS dan password harus diisi.');
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final uri = Uri.parse('http://127.0.0.1:8000/api/user');
+      final response = await http.get(uri);
+
+      if (response.statusCode != 200) {
+        await _showAlert('Gagal terhubung ke server (${response.statusCode}).');
+        return;
+      }
+
+      final body = jsonDecode(response.body);
+      final List<dynamic> users =
+          body is List ? body : (body['data'] as List<dynamic>? ?? []);
+
+      Map<String, dynamic>? matchedUser;
+      for (final user in users) {
+        if (user is Map<String, dynamic>) {
+          final userNis = user['nis']?.toString() ?? '';
+          final userPassword = user['password']?.toString() ?? '';
+          if (userNis == nis && userPassword == password) {
+            matchedUser = user;
+            break;
+          }
+        }
+      }
+
+      if (matchedUser != null) {
+        SessionManager.setUser(matchedUser);
+        if (!mounted) return;
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MainLayout()),
+        );
+      } else {
+        await _showAlert('NIS atau password tidak sesuai.');
+      }
+    } catch (e) {
+      await _showAlert('Terjadi kesalahan: $e');
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                         border: Border.all(color: Colors.grey),
                       ),
                       child: TextField(
+                        controller: _nisController,
                         decoration: InputDecoration(
                           hintText: "Masukkan Username atau NIS",
                           hintStyle: GoogleFonts.poppins(
@@ -112,6 +205,7 @@ class _LoginPageState extends State<LoginPage> {
                         border: Border.all(color: Colors.grey),
                       ),
                       child: TextField(
+                        controller: _passwordController,
                         obscureText: hidePassword,
                         decoration: InputDecoration(
                           hintText: "Masukkan Password",
@@ -149,20 +243,25 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => MainLayout()),
-                        );
-                      },
-                      child: Text(
-                        "Masuk",
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                      onPressed: _isLoading ? null : _login,
+                      child: _isLoading
+                          ? const SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(Colors.white),
+                              ),
+                            )
+                          : Text(
+                              "Masuk",
+                              style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
                     ),
                     const SizedBox(height: 50),
                     Row(
