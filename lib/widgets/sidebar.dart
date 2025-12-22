@@ -15,7 +15,8 @@ import '../pages/jurnal_pembiasaan.dart';
 import '../pages/direktori_siswa.dart';
 
 class MainLayout extends StatefulWidget {
-  const MainLayout({super.key});
+  final int initialIndex;
+  const MainLayout({super.key, this.initialIndex = 0});
 
   @override
   State<MainLayout> createState() => _MainLayoutState();
@@ -23,7 +24,7 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout>
     with SingleTickerProviderStateMixin {
-  int _selectedIndex = 0;
+  late int _selectedIndex;
   bool isDropdownOpen = true;
 
   late AnimationController _dropdownController;
@@ -39,21 +40,22 @@ class _MainLayoutState extends State<MainLayout>
     CatatanSikapPage(),
     PanduanPenggunaanPage(),
     PengaturanAkunPage(),
-    
   ];
 
   @override
   void initState() {
     super.initState();
-
+    _selectedIndex = widget.initialIndex;
     // ✅ Inisialisasi controller dan animasi
     _dropdownController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 200),
     );
 
-    _dropdownAnimation =
-        CurvedAnimation(parent: _dropdownController, curve: Curves.easeInOut);
+    _dropdownAnimation = CurvedAnimation(
+      parent: _dropdownController,
+      curve: Curves.easeInOut,
+    );
 
     // Buka dropdown awal jika perlu
     if (isDropdownOpen) {
@@ -85,6 +87,9 @@ class _MainLayoutState extends State<MainLayout>
   }
 
   @override
+/// Builds the widget tree for the application.
+///
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF2F6FC),
@@ -119,15 +124,20 @@ class _MainLayoutState extends State<MainLayout>
                     CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.white,
-                      child: Icon(Icons.person, size: 40, color: const Color.fromARGB(255, 8, 87, 151)),
+                      child: Icon(
+                        Icons.person,
+                        size: 40,
+                        color: const Color.fromARGB(255, 8, 87, 151),
+                      ),
                     ),
                     const SizedBox(height: 12),
                     Text(
                       "Roy Agung Pamungkas",
                       style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Text(
                       "PPLG XII-4",
@@ -145,9 +155,13 @@ class _MainLayoutState extends State<MainLayout>
                 child: Card(
                   elevation: 3,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   child: ListTile(
-                    leading: const Icon(Icons.grid_view_rounded, color: Color.fromARGB(255, 8, 87, 151)),
+                    leading: const Icon(
+                      Icons.grid_view_rounded,
+                      color: Color.fromARGB(255, 8, 87, 151),
+                    ),
                     title: Text(
                       "Menu Utama",
                       style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
@@ -174,17 +188,27 @@ class _MainLayoutState extends State<MainLayout>
                 ),
               ),
 
-              const Divider(height: 24, thickness: 1, indent: 16, endIndent: 16),
+              const Divider(
+                height: 24,
+                thickness: 1,
+                indent: 16,
+                endIndent: 16,
+              ),
 
               // ===== MENU ITEMS =====
               _menuItem("Jurnal Pembiasaan", Icons.book_outlined, 3),
               _menuItem("Permintaan Saksi", Icons.assignment_rounded, 4),
               _menuItem("Progress", Icons.bar_chart_rounded, 5),
               _menuItem("Catatan Sikap", Icons.edit_note_rounded, 6),
-              const Divider(height: 24, thickness: 1, indent: 16, endIndent: 16),
+              const Divider(
+                height: 24,
+                thickness: 1,
+                indent: 16,
+                endIndent: 16,
+              ),
               _menuItem("Panduan Penggunaan", Icons.help_outline_rounded, 7),
               _menuItem("Pengaturan Akun", Icons.settings_outlined, 8),
-              
+
               const SizedBox(height: 16),
               _menuItem("Logout", Icons.logout_outlined, -1),
             ],
@@ -205,7 +229,10 @@ class _MainLayoutState extends State<MainLayout>
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: const [
                   BoxShadow(
-                      color: Colors.black12, blurRadius: 8, offset: Offset(0, 4))
+                    color: Colors.black12,
+                    blurRadius: 8,
+                    offset: Offset(0, 4),
+                  ),
                 ],
               ),
               child: Row(
@@ -214,9 +241,10 @@ class _MainLayoutState extends State<MainLayout>
                     "Jurnalku",
                     style: GoogleFonts.poppins(
                       color: Color.fromARGB(255, 73, 123, 210),
-                        fontSize: 23,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 0.2),
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.2,
+                    ),
                   ),
                   const Spacer(),
                   Builder(
@@ -232,9 +260,7 @@ class _MainLayoutState extends State<MainLayout>
             ),
 
             // ===== HALAMAN =====
-            Expanded(
-              child: _pages[_selectedIndex],
-            ),
+            Expanded(child: _pages[_selectedIndex]),
           ],
         ),
       ),
@@ -250,11 +276,19 @@ class _MainLayoutState extends State<MainLayout>
         color: isActive ? Colors.blue.shade50 : Colors.transparent,
         borderRadius: BorderRadius.circular(12),
         child: ListTile(
-          leading: Icon(icon, color: isActive ? Color.fromARGB(255, 8, 87, 151) : Colors.black54),
-          title: Text(title,
-              style: GoogleFonts.poppins(
-                  color: isActive ? Color.fromARGB(255, 8, 87, 151) : Colors.black87,
-                  fontWeight: isActive ? FontWeight.bold : FontWeight.normal)),
+          leading: Icon(
+            icon,
+            color: isActive ? Color.fromARGB(255, 8, 87, 151) : Colors.black54,
+          ),
+          title: Text(
+            title,
+            style: GoogleFonts.poppins(
+              color: isActive
+                  ? Color.fromARGB(255, 8, 87, 151)
+                  : Colors.black87,
+              fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
           onTap: () {
             Navigator.pop(context);
             if (index == -1) {
@@ -281,7 +315,11 @@ class _MainLayoutState extends State<MainLayout>
         elevation: 2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: ListTile(
-          leading: const Icon(Icons.circle, size: 10, color: Color.fromARGB(255, 8, 87, 151)),
+          leading: const Icon(
+            Icons.circle,
+            size: 10,
+            color: Color.fromARGB(255, 8, 87, 151),
+          ),
           title: Text(title),
           onTap: () {
             Navigator.pop(context);

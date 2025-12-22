@@ -50,57 +50,40 @@ class _LoginPageState extends State<LoginPage> {
     final password = _passwordController.text;
 
     if (nis.isEmpty || password.isEmpty) {
-      await _showAlert('NIS dan password harus diisi.');
+      _showAlert('NIS dan password harus diisi');
       return;
     }
 
-    setState(() {
-      _isLoading = true;
-    });
+    setState(() => _isLoading = true);
 
     try {
-      final uri = Uri.parse('http://127.0.0.1:8000/api/user');
-      final response = await http.get(uri);
+      final response = await http.post(
+        Uri.parse('http://127.0.0.1:8000/api/login'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'nis': nis, 'password': password}),
+      );
 
-      if (response.statusCode != 200) {
-        await _showAlert('Gagal terhubung ke server (${response.statusCode}).');
-        return;
-      }
+      Map<String, dynamic> data = {};
 
-      final body = jsonDecode(response.body);
-      final List<dynamic> users =
-          body is List ? body : (body['data'] as List<dynamic>? ?? []);
+      try {
+        data = jsonDecode(response.body);
+      } catch (_) {}
 
-      Map<String, dynamic>? matchedUser;
-      for (final user in users) {
-        if (user is Map<String, dynamic>) {
-          final userNis = user['nis']?.toString() ?? '';
-          final userPassword = user['password']?.toString() ?? '';
-          if (userNis == nis && userPassword == password) {
-            matchedUser = user;
-            break;
-          }
-        }
-      }
+      if (response.statusCode == 200 && data['success'] == true) {
+        SessionManager.setUser(data['user']);
 
-      if (matchedUser != null) {
-        SessionManager.setUser(matchedUser);
         if (!mounted) return;
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => MainLayout()),
+          MaterialPageRoute(builder: (_) => MainLayout()),
         );
       } else {
-        await _showAlert('NIS atau password tidak sesuai.');
+        _showAlert(data['message'] ?? 'Login gagal');
       }
     } catch (e) {
-      await _showAlert('Terjadi kesalahan: $e');
+      _showAlert('Terjadi kesalahan: $e');
     } finally {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-      }
+      if (mounted) setState(() => _isLoading = false);
     }
   }
 
@@ -250,8 +233,9 @@ class _LoginPageState extends State<LoginPage> {
                               width: 20,
                               child: CircularProgressIndicator(
                                 strokeWidth: 2,
-                                valueColor:
-                                    AlwaysStoppedAnimation<Color>(Colors.white),
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.white,
+                                ),
                               ),
                             )
                           : Text(

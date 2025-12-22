@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:page_jurnalku/widgets/sidebar.dart';
 
 import '../services/session_manager.dart';
 import 'login_page.dart';
@@ -366,7 +367,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Align(
             alignment: Alignment.centerLeft,
             child: ElevatedButton.icon(
-              onPressed: () => Navigator.of(context).maybePop(),
+              onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => MainLayout())),
               icon: const Icon(Icons.arrow_back, color: Colors.white),
               label: Text('Kembali', style: GoogleFonts.poppins(color: Colors.white)),
               style: ElevatedButton.styleFrom(
