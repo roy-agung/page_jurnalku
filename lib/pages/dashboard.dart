@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_jurnalku/pages/progress.dart';
+import 'package:page_jurnalku/widgets/sidebar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -23,13 +24,16 @@ class _DashboardState extends State<DashboardPage> {
               height: 300,
               padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/images/bgsecondary.jpg'), fit: BoxFit.cover),
+                image: DecorationImage(
+                  image: AssetImage('assets/images/bgsecondary.jpg'),
+                  fit: BoxFit.cover,
+                ),
                 // gradient: LinearGradient(
                 //   begin: Alignment.topLeft,
                 //   end: Alignment.bottomRight,
                 //   colors: [
-                //     Color(0xFF0A2E6D), 
-                //     Color(0xFF1E88E5), 
+                //     Color(0xFF0A2E6D),
+                //     Color(0xFF1E88E5),
                 //   ],
                 // ),
               ),
@@ -51,8 +55,11 @@ class _DashboardState extends State<DashboardPage> {
                     Text(
                       "Solusi cerdas untuk memantau perkembangan kompetensi siswa secara efektif",
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(fontSize: 14, color: Colors.white70,
-                          fontWeight: FontWeight.w500),
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        color: Colors.white70,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ],
                 ),
@@ -68,10 +75,7 @@ class _DashboardState extends State<DashboardPage> {
               gradient: const LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [
-                  Color(0xFF0A2E6D), 
-                  Color(0xFF1E88E5), 
-                ],
+                colors: [Color(0xFF0A2E6D), Color(0xFF1E88E5)],
               ),
             ),
 
@@ -116,16 +120,30 @@ class _DashboardState extends State<DashboardPage> {
                       Icons.person_outline,
                       "Profil",
                       "Lihat dan kelola profilmu di sini.",
+                      () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const MainLayout(initialIndex: 2),
+                          ),
+                        );
+                      },
                     ),
                     _buildMenuItem(
                       Icons.folder_open,
                       "Portofolio",
                       "Lihat dan kelola portofolio kompetensimu di sini.",
+                      () {
+                        Navigator.pop(context);
+                      },
                     ),
                     _buildMenuItem(
                       Icons.workspace_premium,
                       "Sertifikat",
                       "Lihat dan unduh sertifikat kompetensimu di sini.",
+                      () {
+                        Navigator.pop(context);
+                      },
                     ),
                   ]),
                   SizedBox(height: 16),
@@ -134,21 +152,53 @@ class _DashboardState extends State<DashboardPage> {
                       Icons.book_outlined,
                       "Jurnal Pembiasaan",
                       "Catat dan pantau kegiatan pembiasaan harianmu.",
+                      () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const MainLayout(initialIndex: 3),
+                          ),
+                        );
+                      },
                     ),
                     _buildMenuItem(
                       Icons.people_outline,
                       "Permintaan Saksi",
                       "Lihat teman yang mengajukan permintaan saksi.",
+                      () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const MainLayout(initialIndex: 4),
+                          ),
+                        );
+                      },
                     ),
                     _buildMenuItem(
                       Icons.trending_up_outlined,
                       "Progress",
                       "Pantau perkembangan kompetensimu di sini.",
+                      () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const MainLayout(initialIndex: 5),
+                          ),
+                        );
+                      },
                     ),
                     _buildMenuItem(
                       Icons.warning,
                       "Catatan Sikap",
                       "Lihat catatan sikap dan perilaku dari guru.",
+                      () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const MainLayout(initialIndex: 6),
+                          ),
+                        );
+                      },
                     ),
                   ]),
                 ],
@@ -288,9 +338,7 @@ class _DashboardState extends State<DashboardPage> {
                           onTap: () {
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => ProgressPage(),
-                              ),
+                              MaterialPageRoute(builder: (_) => const MainLayout(initialIndex: 5,)),
                             );
                           },
                           child: Text(
@@ -324,7 +372,7 @@ class _DashboardState extends State<DashboardPage> {
                           style: GoogleFonts.poppins(
                             color: Colors.black87,
                             fontWeight: FontWeight.w500,
-                            fontSize: 14
+                            fontSize: 14,
                           ),
                         ),
                         SizedBox(width: 6),
@@ -339,8 +387,11 @@ class _DashboardState extends State<DashboardPage> {
             Center(
               child: Text(
                 "© GEN-28 PPLG SMK Wikrama Bogor. All Rights Reserved.",
-                style: GoogleFonts.poppins(fontSize: 14, color: Colors.blueGrey,
-                    fontWeight: FontWeight.w500),
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: Colors.blueGrey,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ],
@@ -428,7 +479,10 @@ class _DashboardState extends State<DashboardPage> {
             SizedBox(height: 12),
             Text(
               title,
-              style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(height: 8),
             Text(
@@ -461,18 +515,37 @@ class _DashboardState extends State<DashboardPage> {
     );
   }
 
-  Widget _buildMenuItem(IconData icon, String title, String subtitle) {
+  Widget _buildMenuItem(
+    IconData icon,
+    String title,
+    String subtitle,
+    VoidCallback onTap,
+  ) {
     return Column(
       children: [
-        ListTile(
-          leading: Icon(icon, color: Colors.blue[700]),
-          title: Text(
-            title,
-            style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 15),
+        InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(12),
+          child: ListTile(
+            leading: Icon(icon, color: Colors.blue[700]),
+            title: Text(
+              title,
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+            subtitle: Text(
+              subtitle,
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                color: Colors.black54,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            trailing: Icon(Icons.arrow_forward_ios, size: 16),
+            contentPadding: EdgeInsets.zero,
           ),
-          subtitle: Text(subtitle, style: GoogleFonts.poppins(fontSize: 14, color: Colors.black54, fontWeight: FontWeight.w500)),
-          trailing: Icon(Icons.arrow_forward_ios, size: 16),
-          contentPadding: EdgeInsets.zero,
         ),
         Divider(height: 1),
       ],
@@ -563,10 +636,24 @@ class _DashboardState extends State<DashboardPage> {
           children: [
             Icon(Icons.circle, size: 12, color: color),
             SizedBox(width: 8),
-            Text(label, style: GoogleFonts.poppins(fontSize: 14, color: Colors.black87, fontWeight: FontWeight.w500)),
+            Text(
+              label,
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                color: Colors.black87,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ],
         ),
-        Text(value, style: GoogleFonts.poppins(fontSize: 14, color: Colors.black87, fontWeight: FontWeight.w500)),
+        Text(
+          value,
+          style: GoogleFonts.poppins(
+            fontSize: 14,
+            color: Colors.black87,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ],
     );
   }
